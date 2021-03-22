@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ListofThings - Angular Search</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Condensed|Nanum+Gothic|Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="progressLDN">
+        <div class="spinner"></div>
+    </div>
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("List of Things.Com", "ThingCatList", "Things", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("The List of Things", "ThingCatList", "Things")</li>
+                    <li>@Html.ActionLink("Add a Thing", "Create", "Things")</li>
+                    <li>@Html.ActionLink("Crew Images", "PostPage", "Home")</li>
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+    </div>
+    <footer class="text-center">
+        <p>&copy; @DateTime.Now.Year - List of Things.Com</p>
+    </footer>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script>
+        window.addEventListener("load", function () {
+            const preloadobj = document.querySelector(".progressLDN");
+            preloadobj.classList.add("preload-finish");
+
+        });
+    </script>
+</body>
+</html>

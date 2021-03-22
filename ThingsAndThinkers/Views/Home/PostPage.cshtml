@@ -1,0 +1,37 @@
+﻿@model ThingsAndThinkers.HotstaModels.PosterTBL
+@{
+    ViewBag.Title = "CrewStaGram";
+}
+<head>
+    <style>
+    body {
+    padding-top:70px;
+    }
+
+    </style>
+</head>
+
+    <p>@ViewBag.Instructions</p>
+
+    <div id="formDiv">
+        <div id="formDivInternal">
+            @using (Html.BeginForm("PostPage", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+            {
+                @Html.ValidationSummary()
+
+                @Html.LabelFor(l => l.PosterName)
+                <p>@Html.TextBoxFor(u => u.PosterName, new { @class = "form-control" })</p>
+
+                @Html.LabelFor(l => l.ImageFile)
+                <input type="file" name="ImageFile" class="form-control" />
+
+                @Html.LabelFor(l => l.Caption)
+                <p>@Html.TextAreaFor(l => l.Caption, new { @class = "form-control" })</p>
+
+                <br>
+                <br>
+                <p> <input type="submit" value="Submit Details" /></p>
+            }
+        </div>
+    </div>

@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<hr />
+<section ng-app="app" ng-controller="ThingsController as thingVM">
+
+    <div class="table-bordered" style="width:30%;margin-left:auto;margin-right:auto;">
+        <p>{{thingVM.thing.ThingName}}</p>
+        <p>{{thingVM.thing.ThingID}}</p>
+        <p>{{thingVM.thing.ThingImage}}</p>
+    </div>
+
+
+</section>
+@section scripts{
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/app/app.module.js"></script>
+<script src="~/app/things.controller.js"></script>
+}

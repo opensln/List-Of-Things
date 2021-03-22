@@ -1,0 +1,104 @@
+﻿@model IEnumerable<ThingsAndThinkers.Models.ThingTBL>
+
+@{
+    ViewBag.Title = "ThingCatList";
+}
+
+<style>
+    #thingImage {
+        background-image: url("/Content/images/minhouse_default11.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 150px;
+    }
+
+    #holdingDiv {
+        margin-bottom:10px;
+        padding:5px 5px;
+    }
+
+
+    #itemCard {
+        box-shadow: 5px 5px 5px lightgrey;
+        width: 99%;
+        height: 300px;
+        border: 1px solid black;
+        border-radius: 8px;
+        text-align: center;
+        padding: 5px 0px;
+        display: inline-block;
+        position: relative;
+    }
+
+    #avatarDiv {
+        position: absolute;
+        top: 6px;
+        left: 7px;
+        width: 30px;
+        height: 30px;
+        background-image: url(/Content/images/blankUserDefault.jpg);
+        background-position: center;
+        background-size: contain;
+        border-radius: 50%;
+        box-shadow: 2px 2px 5px lightgrey;
+    }
+</style>
+<section ng-app="app" ng-controller="ThingsController as thingsClass">
+
+    <div id="pageContainer" class="text-center">
+
+        <h2>List of Things.Com</h2>
+        <h4>A Simple tool to help you declutter yout home.</h4>
+        @*<div class="table-bordered" style="width:30%;margin-left:auto;margin-right:auto;">
+        <p>{{vm.thing.ThingName}}</p>
+        <p>{{vm.thing.ThingID}}</p>
+        <p>{{vm.thing.ThingImage}}</p>
+        </div>*@
+
+        @*---------------------------------------------Filter and Search------------------------------------------------------------*@
+
+        <label for="searchCategoryId"></label>
+        <select id="searchCategoryId" class="form-control" style="display:inline;" 
+                ng-model="thingsClass.searchInput.selectedCategory"
+                ng-options="item.ThingCatName for item in  thingsClass.searchCategories track by item.ThingCatID"></select>
+
+        <div class="form-group" style="display:inline;">
+            <label id="searchThingNameBox" for="searchThingName" ></label>
+            <input type="text" class="form-control" style="display:inline;" placeholder="Search by Thing Name"
+                   ng-model="thingsClass.searchInput.thingCatName" />
+        </div>
+
+        <button type="button" class="btn btn-sm btn-primary"
+                ng-click="thingsClass.resetSearch()">
+            <i class="glyphicon glyphicon-share-alt"></i>
+            &nbsp;Reset
+        </button>
+
+        <!-- <option>Select a Category</option> alternative way of dong things.
+    <option ng-repeat="thing in thingsClass.searchCategories" value="{{thing.ThingCatID"}}">{{thing.ThingCatName}}</option> -->
+
+        <hr />
+
+
+        <div id="holdingDiv" ng-repeat="thing in thingsClass.things | filter: thingsClass.searchImmediate" class="col-md-4">
+            <div id="itemCard">
+
+                <div id="avatarDiv"></div>
+                @*<p>{{thing}}</p>*@
+                <p style="color:white;">__</p>
+                <p>{{thing.Thinker.Name}}</p>
+                <div id="thingImage"></div>
+                <h4>{{thing.ThingName}}</h4>
+                <p>{{thing.ThingCat.ThingCatName}}</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+@section scripts
+{
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/app/app.module.js"></script>
+    <script src="~/app/things.controller.js"></script>
+}

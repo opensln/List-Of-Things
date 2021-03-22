@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "ShowInput";
+}
+<head>
+    <style>
+        body {
+            padding-top:70px;
+        }
+        section {
+        }
+
+        p, h2 {
+            /*display: inline-block;*/
+            text-align: center;
+        }
+
+
+        .field-validation-error {
+            color: #ff0000;
+        }
+
+        .validation-summary-errors {
+            color: #ff0000;
+        }
+    </style>
+</head>
+
+
+<p>@*<span>avatar.jpg</span>*@ @ViewBag.PostersName</p>
+@*<p>@Model</p>*@
+<p>@ViewBag.PosterID</p>
+<p><img src="~/Content/crewimages/@ViewBag.image" width="300" /></p>
+@*<p>@ViewBag.NewFileName</p>*@
+<p>@ViewBag.Caption</p>
+<p>@ViewBag.DatePosted</p>
